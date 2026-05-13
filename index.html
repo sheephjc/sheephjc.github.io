@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJC 的个人主页</title>
+    <meta name="description" content="HJC 的个人空间，整理项目、留言和 GitHub Pages。">
+
+    <link rel="icon" href="assets/images/WS_trans.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="返回首页">
+            <img src="assets/images/WS_trans.png" alt="" class="brand-mark">
+            <span>HJC</span>
+        </a>
+
+        <nav class="site-nav" aria-label="主导航">
+            <a href="#projects">项目</a>
+            <button type="button" data-open-guestbook>留言</button>
+            <a href="https://github.com/sheephjc" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-lockup">
+                <div class="hero-identity" data-unlock-track data-unlock-target="#projects">
+                    <div class="avatar-frame" role="button" tabindex="0" aria-label="拖动头像到右侧查看项目" data-unlock-handle>
+                        <img src="assets/images/Woodstock.png" alt="HJC 的头像">
+                    </div>
+                    <div class="hero-nameplate">
+                        <h1 id="hero-title">HJC 的空间</h1>
+                    </div>
+                </div>
+                <p class="hero-credit">by Codex and Gemini</p>
+            </div>
+            <div class="hero-fade" aria-hidden="true"></div>
+        </section>
+
+        <section class="projects-section" id="projects" aria-label="项目">
+            <div class="project-grid">
+                <a class="project-card" href="小鳄龙/index.html">
+                    <span>项目</span>
+                    <strong>小鳄龙之家</strong>
+                </a>
+
+                <a class="project-card" href="tools/MS.html" target="_blank" rel="noopener noreferrer">
+                    <span>工具</span>
+                    <strong>高分辨质谱计算器</strong>
+                </a>
+
+                <a class="project-card" href="tools/漳州麻将联机版/index.html" target="_blank" rel="noopener noreferrer">
+                    <span>游戏</span>
+                    <strong>漳州麻将联机版</strong>
+                </a>
+
+                <a class="project-card" href="https://sheephjc.github.io/Clipboard/" target="_blank" rel="noopener noreferrer">
+                    <span>工具</span>
+                    <strong>Clipboard 剪贴板</strong>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <button type="button" data-open-guestbook>留言板</button>
+        <span>·</span>
+        <span>GitHub Pages</span>
+    </footer>
+
+    <div class="modal-overlay" data-guestbook-modal hidden>
+        <section class="guestbook-modal" role="dialog" aria-modal="true" aria-labelledby="guestbook-title">
+            <button class="modal-close" type="button" data-close-guestbook aria-label="关闭留言板">×</button>
+            <h2 id="guestbook-title">留言板</h2>
+
+            <div class="guestbook-layout">
+                <form class="guestbook-form" data-guestbook-form>
+                    <label for="guestName">昵称</label>
+                    <input id="guestName" name="name" type="text" autocomplete="name" maxlength="24" placeholder="你的昵称">
+
+                    <label for="guestMsg">留言</label>
+                    <textarea id="guestMsg" name="message" rows="5" maxlength="240" placeholder="说点什么..."></textarea>
+
+                    <button class="button" type="submit" data-submit-message>发送</button>
+                    <p class="form-status" data-form-status aria-live="polite"></p>
+                </form>
+
+                <div class="messages-panel" aria-live="polite" aria-busy="true">
+                    <div class="messages-list" data-messages>
+                        <p class="empty-message">加载留言中...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
