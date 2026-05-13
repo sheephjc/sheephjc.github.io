@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="高分辨质谱精确质量分子式计算器。">
+    <title>高分辨率质谱计算器</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-copy">
+            <p class="eyebrow">High-Resolution Mass Spectrometry Calculator</p>
+            <h1>高分辨率质谱计算器</h1>
+        </div>
+        <nav class="header-nav" aria-label="外部链接">
+            <a href="../../index.html">HJC</a>
+            <a href="https://github.com/sheephjc/MassCalculator" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+    </header>
+
+    <main class="workspace">
+        <form class="control-surface" id="calculatorForm">
+            <section class="tool-panel primary-panel" aria-labelledby="mass-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-kicker">Target</p>
+                        <h2 id="mass-title">质量输入</h2>
+                    </div>
+                    <output id="modePreview" class="mode-preview">Neutral</output>
+                </div>
+
+                <label class="field-label" for="massInput">观测质量 Da</label>
+                <input id="massInput" name="mass" type="number" step="any" inputmode="decimal" autocomplete="off" placeholder="180.0634">
+
+                <fieldset class="segmented-control" aria-label="离子峰类型">
+                    <label>
+                        <input type="radio" name="ionMode" value="neutral" checked>
+                        <span>Neutral</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="ionMode" value="mNa">
+                        <span>[M+Na]</span>
+                    </label>
+                </fieldset>
+
+                <div class="button-row">
+                    <button class="button button-primary" type="submit">计算</button>
+                    <button class="button button-secondary" type="button" id="resetForm">清空输入</button>
+                </div>
+                <p class="form-status" id="formStatus" aria-live="polite"></p>
+            </section>
+
+            <section class="tool-panel" aria-labelledby="limits-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-kicker">Limits</p>
+                        <h2 id="limits-title">元素数量限制</h2>
+                    </div>
+                    <button class="link-button" type="button" id="clearRestrictions">清空限制</button>
+                </div>
+
+                <div class="limit-header" aria-hidden="true">
+                    <span>元素</span>
+                    <span>最小</span>
+                    <span>最大</span>
+                </div>
+                <div class="element-limit-grid" id="elementLimitGrid"></div>
+            </section>
+
+            <section class="tool-panel" aria-labelledby="advanced-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-kicker">Filters</p>
+                        <h2 id="advanced-title">高级筛选</h2>
+                    </div>
+                    <button class="link-button" type="button" id="saveRestrictions">保存限制</button>
+                </div>
+
+                <label class="field-label" for="heteroAtomCount">杂原子总数</label>
+                <input id="heteroAtomCount" name="heteroAtomCount" type="number" min="0" max="10" inputmode="numeric" placeholder="不限">
+
+                <fieldset class="check-grid" id="heteroTypeChecks">
+                    <legend>允许的杂原子</legend>
+                </fieldset>
+            </section>
+        </form>
+
+        <section class="results-surface" aria-labelledby="results-title">
+            <div class="results-toolbar">
+                <div>
+                    <p class="section-kicker">Matches</p>
+                    <h2 id="results-title">候选分子式</h2>
+                </div>
+                <button class="link-button" type="button" id="clearHistory">清空历史</button>
+            </div>
+
+            <div class="intro-note" id="introNote">
+                <div>
+                    <span>计算精度</span>
+                    <strong>±0.002 Da</strong>
+                </div>
+                <div>
+                    <span>计算范围</span>
+                    <strong>16.0313-1000 Da</strong>
+                </div>
+                <div>
+                    <span>质量类型</span>
+                    <strong>Monoisotopic</strong>
+                </div>
+                <div>
+                    <span>搜索限制</span>
+                    <strong>元素种类、个数</strong>
+                </div>
+            </div>
+
+            <div class="history-section" id="results"></div>
+        </section>
+    </main>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
