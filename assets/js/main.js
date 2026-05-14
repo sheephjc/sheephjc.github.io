@@ -33,11 +33,44 @@ const formStatus = document.querySelector("[data-form-status]");
 const modal = document.querySelector("[data-guestbook-modal]");
 const openGuestbookButtons = document.querySelectorAll("[data-open-guestbook]");
 const closeGuestbookButton = document.querySelector("[data-close-guestbook]");
+const toolCards = document.querySelectorAll("[data-tool-modal]");
+const toolInfoModal = document.querySelector("[data-tool-info-modal]");
+const closeToolModalButton = document.querySelector("[data-close-tool-modal]");
+const toolTitle = document.querySelector("[data-tool-title]");
+const toolMeta = document.querySelector("[data-tool-meta]");
+const toolFeatures = document.querySelector("[data-tool-features]");
+const toolNotice = document.querySelector("[data-tool-notice]");
+const toolDownload = document.querySelector("[data-tool-download]");
 const unlockTrack = document.querySelector("[data-unlock-track]");
 const unlockHandle = document.querySelector("[data-unlock-handle]");
 const unlockTitle = unlockTrack?.querySelector("#hero-title");
 
 const messagesQuery = query(messagesCol, orderBy("createdAt", "desc"), limit(50));
+const toolModalContent = {
+    yuketang: {
+        title: "雨课堂组件（HJC 改进）",
+        meta: ["原作者：niuwh.cn", "改进者：HJC by Codex"],
+        features: [
+            "能够自动刷视频、发讨论、做作业。",
+            "作业采用 OCR 后接入大模型。",
+            "提供 DeepSeek API。",
+            "改进后能够选择任一任务开始刷。"
+        ],
+        notice: "",
+        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/Yuketang.zip"
+    },
+    recorder: {
+        title: "隐藏式录屏",
+        meta: [],
+        features: [
+            "打开后隐藏于任务栏托盘。",
+            "可以在任务栏托盘启动关闭，也可以用快捷键控制。",
+            "录屏过程全程隐藏。"
+        ],
+        notice: "请仅在本人设备或已获授权的场景使用。",
+        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/HiddenScreenRecorder.zip"
+    }
+};
 const unlockThreshold = 0.85;
 const unlockResetDelay = 650;
 let unlockPointerId = null;
@@ -218,8 +251,63 @@ modal.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) {
+    if (event.key !== "Escape") {
+        return;
+    }
+
+    if (toolInfoModal && !toolInfoModal.hidden) {
+        closeToolModal();
+        return;
+    }
+
+    if (!modal.hidden) {
         closeGuestbook();
+    }
+});
+
+function renderToolTextList(container, items, className) {
+    container.replaceChildren();
+
+    items.forEach((item) => {
+        const element = document.createElement(className === "tool-meta-item" ? "span" : "li");
+        element.className = className;
+        element.textContent = item;
+        container.append(element);
+    });
+}
+
+function openToolModal(card, event) {
+    const content = toolModalContent[card.dataset.toolModal];
+    if (!content || !toolInfoModal) {
+        return;
+    }
+
+    event.preventDefault();
+    toolTitle.textContent = content.title;
+    renderToolTextList(toolMeta, content.meta, "tool-meta-item");
+    renderToolTextList(toolFeatures, content.features, "");
+    toolNotice.textContent = content.notice;
+    toolNotice.hidden = !content.notice;
+    toolDownload.href = content.downloadUrl;
+    toolInfoModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    setTimeout(() => closeToolModalButton.focus(), 0);
+}
+
+function closeToolModal() {
+    toolInfoModal.hidden = true;
+    document.body.style.overflow = "";
+}
+
+toolCards.forEach((card) => {
+    card.addEventListener("click", (event) => openToolModal(card, event));
+});
+
+closeToolModalButton?.addEventListener("click", closeToolModal);
+
+toolInfoModal?.addEventListener("click", (event) => {
+    if (event.target === toolInfoModal) {
+        closeToolModal();
     }
 });
 

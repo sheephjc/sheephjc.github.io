@@ -51,7 +51,7 @@
                     <strong>高分辨质谱计算器</strong>
                 </a>
 
-                <a class="project-card" href="tools/漳州麻将联机版/index.html" target="_blank" rel="noopener noreferrer">
+                <a class="project-card" href="https://sheephjc.github.io/Zhangzhou-Mahjong/" target="_blank" rel="noopener noreferrer">
                     <span>游戏</span>
                     <strong>漳州麻将联机版</strong>
                 </a>
@@ -60,15 +60,23 @@
                     <span>工具</span>
                     <strong>Clipboard 剪贴板</strong>
                 </a>
+
+                <button class="project-card" type="button" data-tool-modal="yuketang" aria-haspopup="dialog">
+                    <span>工具</span>
+                    <strong>雨课堂组件（HJC 改进）</strong>
+                </button>
+
+                <button class="project-card" type="button" data-tool-modal="recorder" aria-haspopup="dialog">
+                    <span>工具</span>
+                    <strong>隐藏式录屏</strong>
+                </button>
             </div>
         </section>
 
     </main>
 
     <footer class="site-footer">
-        <button type="button" data-open-guestbook>留言板</button>
-        <span>·</span>
-        <span>GitHub Pages</span>
+        <span>GitHub Pages · Github releases</span>
     </footer>
 
     <div class="modal-overlay" data-guestbook-modal hidden>
@@ -94,6 +102,18 @@
                     </div>
                 </div>
             </div>
+        </section>
+    </div>
+
+    <div class="modal-overlay" data-tool-info-modal hidden>
+        <section class="tool-modal" role="dialog" aria-modal="true" aria-labelledby="tool-modal-title">
+            <button class="modal-close" type="button" data-close-tool-modal aria-label="关闭工具介绍">×</button>
+            <p class="tool-modal-kicker">工具介绍</p>
+            <h2 id="tool-modal-title" data-tool-title></h2>
+            <div class="tool-meta-list" data-tool-meta></div>
+            <ul class="tool-feature-list" data-tool-features></ul>
+            <p class="tool-notice" data-tool-notice hidden></p>
+            <a class="button tool-download-button" href="#" target="_blank" rel="noopener noreferrer" data-tool-download>下载 .zip</a>
         </section>
     </div>
 

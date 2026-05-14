@@ -260,7 +260,7 @@ a {
 }
 
 .projects-section {
-    width: min(840px, calc(100% - 36px));
+    width: min(960px, calc(100% - 36px));
     margin: 0 auto;
     padding: clamp(42px, 6vw, 64px) 0 clamp(28px, 5vw, 48px);
 }
@@ -275,7 +275,7 @@ h2 {
 .project-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
     margin: 0 auto;
 }
@@ -291,7 +291,10 @@ h2 {
     border-radius: var(--radius);
     background: var(--panel);
     box-shadow: 0 14px 32px rgba(35, 45, 48, 0.09);
+    font: inherit;
+    text-align: left;
     text-decoration: none;
+    cursor: pointer;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
@@ -365,12 +368,18 @@ h2 {
 
 .button {
     min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 0;
     border-radius: var(--radius);
+    padding: 0 16px;
     color: #ffffff;
     background: var(--green);
     font: inherit;
     font-weight: 800;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
     transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
 }
@@ -508,6 +517,86 @@ h2 {
     margin-bottom: 22px;
 }
 
+.tool-modal {
+    position: relative;
+    container-type: inline-size;
+    width: min(520px, 100%);
+    max-height: min(680px, calc(100vh - 48px));
+    overflow: auto;
+    padding: clamp(22px, 4vw, 32px);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: var(--radius);
+    background: rgba(247, 251, 245, 0.94);
+    box-shadow: 0 28px 80px rgba(22, 31, 35, 0.26);
+}
+
+.tool-modal-kicker {
+    margin: 0 0 10px;
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.tool-modal h2 {
+    margin: 0;
+    padding-right: 36px;
+    font-size: clamp(1.28rem, 5.2cqw, 1.95rem);
+    line-height: 1.05;
+    white-space: nowrap;
+}
+
+.tool-meta-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+}
+
+.tool-meta-item {
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(43, 55, 58, 0.1);
+    border-radius: 999px;
+    padding: 0 10px;
+    color: #426163;
+    background: rgba(255, 255, 255, 0.64);
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.tool-feature-list {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tool-feature-list li {
+    border: 1px solid rgba(43, 55, 58, 0.1);
+    border-radius: var(--radius);
+    padding: 12px 13px;
+    color: #465d60;
+    background: rgba(255, 255, 255, 0.64);
+}
+
+.tool-notice {
+    margin: 16px 0 0;
+    border-left: 3px solid var(--rose);
+    padding: 10px 12px;
+    color: #6b4445;
+    background: rgba(255, 244, 243, 0.86);
+    font-size: 0.92rem;
+}
+
+.tool-download-button {
+    width: 100%;
+    margin-top: 18px;
+    overflow-wrap: anywhere;
+}
+
 .modal-close {
     position: absolute;
     top: 14px;
@@ -605,7 +694,8 @@ h2 {
 
 @media (max-width: 520px) {
     .projects-section,
-    .guestbook-modal {
+    .guestbook-modal,
+    .tool-modal {
         width: min(100% - 28px, 860px);
     }
 
@@ -618,7 +708,8 @@ h2 {
         padding: 14px;
     }
 
-    .guestbook-modal {
+    .guestbook-modal,
+    .tool-modal {
         max-height: calc(100vh - 28px);
         padding: 20px;
     }
