@@ -261,6 +261,7 @@
         applyRestrictionsToUi(restrictionSettings);
         updateModePreview();
         bindEvents();
+        initializeMobileCollapsiblePanels();
     }
 
     function bindEvents() {
@@ -287,6 +288,42 @@
         dom.elementLimitGrid.addEventListener('change', collectAndStoreRestrictionsSilently);
         dom.heteroAtomCount.addEventListener('change', collectAndStoreRestrictionsSilently);
         dom.heteroTypeChecks.addEventListener('change', collectAndStoreRestrictionsSilently);
+    }
+
+    function initializeMobileCollapsiblePanels() {
+        const mobilePanels = window.matchMedia('(max-width: 760px)');
+        const toggles = [...document.querySelectorAll('[data-collapse-target]')];
+
+        const syncPanel = (toggle) => {
+            const panel = toggle.closest('.collapsible-panel');
+            const body = document.getElementById(toggle.dataset.collapseTarget);
+            if (!panel || !body) return;
+
+            const isMobile = mobilePanels.matches;
+            const isExpanded = !isMobile || !panel.classList.contains('is-collapsed');
+            toggle.setAttribute('aria-expanded', String(isExpanded));
+            toggle.textContent = isExpanded ? '收起' : '展开';
+            body.hidden = !isExpanded;
+        };
+
+        const syncAll = () => toggles.forEach(syncPanel);
+
+        toggles.forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                const panel = toggle.closest('.collapsible-panel');
+                if (!panel) return;
+                panel.classList.toggle('is-collapsed');
+                syncPanel(toggle);
+            });
+        });
+
+        if (typeof mobilePanels.addEventListener === 'function') {
+            mobilePanels.addEventListener('change', syncAll);
+        } else if (typeof mobilePanels.addListener === 'function') {
+            mobilePanels.addListener(syncAll);
+        }
+
+        syncAll();
     }
 
     function renderElementLimits() {
@@ -326,6 +363,14 @@
     }
 
     function createNumberInput(id, role, symbol) {
+        const label = document.createElement('label');
+        label.className = 'limit-input';
+        label.htmlFor = id;
+
+        const labelText = document.createElement('span');
+        labelText.className = 'limit-input-label';
+        labelText.textContent = role === 'min' ? '最小' : '最大';
+
         const input = document.createElement('input');
         input.type = 'number';
         input.min = '0';
@@ -333,8 +378,11 @@
         input.id = id;
         input.dataset.role = role;
         input.dataset.symbol = symbol;
+        input.placeholder = role === 'min' ? '最小' : '最大';
         input.setAttribute('aria-label', `${symbol} ${role === 'min' ? '最小值' : '最大值'}`);
-        return input;
+
+        label.append(labelText, input);
+        return label;
     }
 
     function renderHeteroChecks() {

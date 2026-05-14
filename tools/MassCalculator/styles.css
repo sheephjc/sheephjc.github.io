@@ -196,6 +196,33 @@ h2 {
     margin-bottom: 18px;
 }
 
+.panel-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.collapse-toggle {
+    display: none;
+    min-height: 32px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0 11px;
+    color: #315357;
+    background: #f7fbfb;
+    font-size: 0.82rem;
+    font-weight: 900;
+    transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.collapse-toggle:hover {
+    border-color: var(--line-strong);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
 .field-label {
     display: block;
     margin-bottom: 7px;
@@ -355,6 +382,19 @@ input[type="number"]:focus {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: #fbfdfd;
+}
+
+.limit-input {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+}
+
+.limit-input-label {
+    display: none;
+    color: #5d7075;
+    font-size: 0.76rem;
+    font-weight: 900;
 }
 
 .element-name {
@@ -682,15 +722,23 @@ input[type="number"]:focus {
 }
 
 @media (max-width: 760px) {
+    body {
+        height: auto;
+        min-height: 100dvh;
+        display: block;
+        overflow: auto;
+    }
+
     .app-header {
         min-height: auto;
-        padding: 22px 18px;
+        padding: 18px;
     }
 
     .workspace {
         width: calc(100% - 24px);
         grid-template-columns: 1fr;
-        overflow: auto;
+        margin: 12px auto 18px;
+        overflow: visible;
     }
 
     .control-surface {
@@ -708,9 +756,63 @@ input[type="number"]:focus {
         padding: 14px;
     }
 
+    .panel-heading,
+    .results-toolbar {
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .collapse-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .collapsible-panel.is-collapsed .collapsible-body {
+        display: none;
+    }
+
+    .collapsible-panel.is-collapsed .panel-heading {
+        margin-bottom: 0;
+    }
+
     .button-row,
     .segmented-control {
         grid-template-columns: 1fr;
+    }
+
+    .limit-header {
+        display: none;
+    }
+
+    .limit-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas:
+            "name name"
+            "min max";
+        gap: 8px 10px;
+        padding: 10px;
+    }
+
+    .limit-row .element-name {
+        grid-area: name;
+    }
+
+    .limit-row .limit-input:first-of-type {
+        grid-area: min;
+    }
+
+    .limit-row .limit-input:last-of-type {
+        grid-area: max;
+    }
+
+    .limit-input-label {
+        display: block;
+    }
+
+    .limit-row input {
+        min-height: 44px;
+        text-align: left;
     }
 
     .check-grid {
@@ -767,17 +869,40 @@ input[type="number"]:focus {
 
 @media (max-width: 460px) {
     h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
-    .limit-header,
-    .limit-row {
-        grid-template-columns: minmax(70px, 1fr) minmax(58px, 0.75fr) minmax(58px, 0.75fr);
-        gap: 6px;
+    .eyebrow {
+        font-size: 0.68rem;
     }
 
-    .element-cn {
-        display: none;
+    .header-nav {
+        gap: 14px;
+    }
+
+    .workspace {
+        width: calc(100% - 18px);
+    }
+
+    .check-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 360px) {
+    .panel-heading,
+    .results-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .panel-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .button-row {
+        gap: 8px;
     }
 
     .check-grid {

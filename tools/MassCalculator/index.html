@@ -52,38 +52,48 @@
                 <p class="form-status" id="formStatus" aria-live="polite"></p>
             </section>
 
-            <section class="tool-panel" aria-labelledby="limits-title">
+            <section class="tool-panel collapsible-panel is-collapsed" aria-labelledby="limits-title">
                 <div class="panel-heading">
                     <div>
                         <p class="section-kicker">Limits</p>
                         <h2 id="limits-title">元素数量限制</h2>
                     </div>
-                    <button class="link-button" type="button" id="clearRestrictions">清空限制</button>
+                    <div class="panel-actions">
+                        <button class="collapse-toggle" type="button" aria-expanded="false" aria-controls="limitsBody" data-collapse-target="limitsBody">展开</button>
+                        <button class="link-button" type="button" id="clearRestrictions">清空限制</button>
+                    </div>
                 </div>
 
-                <div class="limit-header" aria-hidden="true">
-                    <span>元素</span>
-                    <span>最小</span>
-                    <span>最大</span>
+                <div class="collapsible-body" id="limitsBody">
+                    <div class="limit-header" aria-hidden="true">
+                        <span>元素</span>
+                        <span>最小</span>
+                        <span>最大</span>
+                    </div>
+                    <div class="element-limit-grid" id="elementLimitGrid"></div>
                 </div>
-                <div class="element-limit-grid" id="elementLimitGrid"></div>
             </section>
 
-            <section class="tool-panel" aria-labelledby="advanced-title">
+            <section class="tool-panel collapsible-panel is-collapsed" aria-labelledby="advanced-title">
                 <div class="panel-heading">
                     <div>
                         <p class="section-kicker">Filters</p>
                         <h2 id="advanced-title">高级筛选</h2>
                     </div>
-                    <button class="link-button" type="button" id="saveRestrictions">保存限制</button>
+                    <div class="panel-actions">
+                        <button class="collapse-toggle" type="button" aria-expanded="false" aria-controls="filtersBody" data-collapse-target="filtersBody">展开</button>
+                        <button class="link-button" type="button" id="saveRestrictions">保存限制</button>
+                    </div>
                 </div>
 
-                <label class="field-label" for="heteroAtomCount">杂原子总数</label>
-                <input id="heteroAtomCount" name="heteroAtomCount" type="number" min="0" max="10" inputmode="numeric" placeholder="不限">
+                <div class="collapsible-body" id="filtersBody">
+                    <label class="field-label" for="heteroAtomCount">杂原子总数</label>
+                    <input id="heteroAtomCount" name="heteroAtomCount" type="number" min="0" max="10" inputmode="numeric" placeholder="不限">
 
-                <fieldset class="check-grid" id="heteroTypeChecks">
-                    <legend>允许的杂原子</legend>
-                </fieldset>
+                    <fieldset class="check-grid" id="heteroTypeChecks">
+                        <legend>允许的杂原子</legend>
+                    </fieldset>
+                </div>
             </section>
         </form>
 

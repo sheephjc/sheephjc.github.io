@@ -172,14 +172,79 @@ a {
 
 .hero-credit {
     margin: 0;
-    color: #3f9b5c;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.32em;
+    color: #ffffff;
     font-size: clamp(1.18rem, 1.9vw, 1.48rem);
     font-weight: 800;
     line-height: 1.25;
     letter-spacing: 0;
     text-align: center;
-    text-shadow: 0 1px 14px rgba(255, 255, 255, 0.72);
-    transform: translate(100px, 12px);
+    text-shadow:
+        0 1px 10px rgba(38, 64, 65, 0.28),
+        0 0 14px rgba(255, 255, 255, 0.48);
+    transform: none;
+}
+
+.hero-credit a {
+    text-decoration: none;
+    transition:
+        color 180ms ease,
+        filter 180ms ease,
+        text-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.hero-credit a:hover {
+    transform: translateY(-1px);
+}
+
+.hero-credit a:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid rgba(255, 255, 255, 0.82);
+    outline-offset: 3px;
+}
+
+.credit-codex {
+    display: inline-block;
+    color: #bcead9;
+    text-shadow:
+        0 1px 10px rgba(43, 117, 102, 0.36),
+        0 0 16px rgba(210, 255, 238, 0.7);
+}
+
+.credit-codex:hover,
+.credit-codex:focus-visible {
+    color: #d5f7ea;
+    text-shadow:
+        0 1px 10px rgba(43, 117, 102, 0.42),
+        0 0 22px rgba(210, 255, 238, 0.92);
+}
+
+.credit-gemini {
+    display: inline-block;
+    color: transparent;
+    background: linear-gradient(
+        92deg,
+        #f27f61 0%,
+        #ffd76a 22%,
+        #93dc83 40%,
+        #62c9f2 58%,
+        #8d87f6 78%,
+        #f59bd0 100%
+    );
+    background-size: 180% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 8px rgba(78, 92, 116, 0.32));
+}
+
+.credit-gemini:hover,
+.credit-gemini:focus-visible {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 1px 10px rgba(78, 92, 116, 0.42));
 }
 
 .avatar-frame {
@@ -638,15 +703,16 @@ h2 {
 
 @media (max-width: 720px) {
     .site-header {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
         gap: 10px;
         padding: 14px 20px;
     }
 
     .site-nav {
-        width: 100%;
-        justify-content: space-between;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        min-width: 0;
     }
 
     .site-nav a,
@@ -683,12 +749,20 @@ h2 {
 
     .hero-credit {
         font-size: 1.08rem;
-        transform: translateY(10px);
     }
 
     .project-card {
         width: 100%;
         min-height: 96px;
+    }
+
+    .modal-overlay[data-guestbook-modal] {
+        align-items: flex-start;
+        padding-top: 54px;
+    }
+
+    .modal-overlay[data-guestbook-modal] .guestbook-modal {
+        max-height: calc(100svh - 72px);
     }
 }
 
