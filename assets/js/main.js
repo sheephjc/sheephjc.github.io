@@ -69,6 +69,17 @@ const toolModalContent = {
         ],
         notice: "请仅在本人设备或已获授权的场景使用。",
         downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/HiddenScreenRecorder.zip"
+    },
+    keywizard: {
+        title: "按键小精灵",
+        meta: ["Windows 小工具", "安装包：KeyWizard.zip"],
+        features: [
+            "一个 Windows 按键循环小工具。",
+            "支持录制自定义按键顺序，也可以使用默认的上、下、左、右。",
+            "可设置按键间隔，并会保存按键顺序和时间间隔配置。",
+            "支持窗口置顶。"
+        ],
+        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/KeyWizard.zip"
     }
 };
 const unlockThreshold = 0.85;

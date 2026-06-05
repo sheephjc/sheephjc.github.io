@@ -41,3 +41,11 @@ GitHub Pages: <https://sheephjc.github.io/>
 录屏可以通过任务栏托盘菜单启动或关闭，也可以使用快捷键控制；录制过程保持隐藏。
 
 下载地址：<https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/HiddenScreenRecorder.zip>
+
+### 按键小精灵
+
+一个 Windows 按键循环小工具。点击“启动”后会等待 3 秒，方便切换到目标窗口，然后按设置好的顺序循环发送键盘按键。
+
+工具默认按键顺序是“上、下、左、右”，也可以录制自定义按键顺序；支持设置按键间隔、窗口置顶，并会把按键顺序和时间间隔保存到 exe 同目录。
+
+下载地址：<https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/KeyWizard.zip>
