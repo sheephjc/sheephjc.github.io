@@ -36,6 +36,7 @@ const closeGuestbookButton = document.querySelector("[data-close-guestbook]");
 const toolCards = document.querySelectorAll("[data-tool-modal]");
 const toolInfoModal = document.querySelector("[data-tool-info-modal]");
 const closeToolModalButton = document.querySelector("[data-close-tool-modal]");
+const toolKicker = document.querySelector("[data-tool-kicker]");
 const toolTitle = document.querySelector("[data-tool-title]");
 const toolMeta = document.querySelector("[data-tool-meta]");
 const toolFeatures = document.querySelector("[data-tool-features]");
@@ -47,7 +48,21 @@ const unlockTitle = unlockTrack?.querySelector("#hero-title");
 
 const messagesQuery = query(messagesCol, orderBy("createdAt", "desc"), limit(50));
 const toolModalContent = {
+    xiaoelong: {
+        kicker: "项目介绍",
+        title: "小鳄龙桌面组件",
+        meta: ["Windows 桌面伴侣", "版本：1.1.0"],
+        features: [
+            "面向固定小群使用，提供桌面悬浮入口。",
+            "支持实时聊天，可发送文字、图片和文件。",
+            "包含每日心情、每日问题和联机五子棋。",
+            "使用 Electron、React 和 Socket.io 构建。"
+        ],
+        notice: "下载包为 Windows 1.1.0 版本。",
+        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/XiaoELong.Setup.1.1.0.zip"
+    },
     yuketang: {
+        kicker: "工具介绍",
         title: "雨课堂组件（HJC 改进）",
         meta: ["原作者：niuwh.cn", "改进者：HJC by Codex"],
         features: [
@@ -60,6 +75,7 @@ const toolModalContent = {
         downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/Yuketang.zip"
     },
     recorder: {
+        kicker: "工具介绍",
         title: "隐藏式录屏",
         meta: [],
         features: [
@@ -71,6 +87,7 @@ const toolModalContent = {
         downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/HiddenScreenRecorder.zip"
     },
     keywizard: {
+        kicker: "工具介绍",
         title: "按键小精灵",
         meta: ["Windows 小工具", "安装包：KeyWizard.zip"],
         features: [
@@ -294,6 +311,7 @@ function openToolModal(card, event) {
     }
 
     event.preventDefault();
+    toolKicker.textContent = content.kicker;
     toolTitle.textContent = content.title;
     renderToolTextList(toolMeta, content.meta, "tool-meta-item");
     renderToolTextList(toolFeatures, content.features, "");

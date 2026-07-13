@@ -6,6 +6,16 @@ GitHub Pages: <https://sheephjc.github.io/>
 
 ### 小鳄龙之家
 
+面向固定小群使用的 Windows/macOS 桌面伴侣。项目提供桌面悬浮入口，支持实时聊天、每日心情、每日问题和联机五子棋等功能。
+
+Windows 1.1.0 版本下载：<https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/XiaoELong.Setup.1.1.0.zip>
+
+### Fenglab
+
+Fenglab 独立网站。
+
+网站地址：<https://fenglab.sheephjc.cn/>
+
 ## 游戏
 
 ### 漳州麻将联机版

@@ -46,9 +46,14 @@
 
         <section class="projects-section" id="projects" aria-label="项目">
             <div class="project-grid">
-                <a class="project-card" href="小鳄龙/index.html">
+                <button class="project-card" type="button" data-tool-modal="xiaoelong" aria-haspopup="dialog">
                     <span>项目</span>
                     <strong>小鳄龙之家</strong>
+                </button>
+
+                <a class="project-card" href="https://fenglab.sheephjc.cn/" target="_blank" rel="noopener noreferrer">
+                    <span>网站</span>
+                    <strong>Fenglab</strong>
                 </a>
 
                 <a class="project-card" href="tools/MassCalculator/" target="_blank" rel="noopener noreferrer">
@@ -117,8 +122,8 @@
 
     <div class="modal-overlay" data-tool-info-modal hidden>
         <section class="tool-modal" role="dialog" aria-modal="true" aria-labelledby="tool-modal-title">
-            <button class="modal-close" type="button" data-close-tool-modal aria-label="关闭工具介绍">×</button>
-            <p class="tool-modal-kicker">工具介绍</p>
+            <button class="modal-close" type="button" data-close-tool-modal aria-label="关闭介绍">×</button>
+            <p class="tool-modal-kicker" data-tool-kicker>工具介绍</p>
             <h2 id="tool-modal-title" data-tool-title></h2>
             <div class="tool-meta-list" data-tool-meta></div>
             <ul class="tool-feature-list" data-tool-features></ul>
