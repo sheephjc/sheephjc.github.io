@@ -50,16 +50,17 @@ const messagesQuery = query(messagesCol, orderBy("createdAt", "desc"), limit(50)
 const toolModalContent = {
     xiaoelong: {
         kicker: "项目介绍",
-        title: "小鳄龙桌面组件",
-        meta: ["Windows 桌面伴侣", "版本：1.1.0"],
+        title: "小鳄龙之家",
+        meta: ["网页游戏大厅", "浏览器访问"],
         features: [
-            "面向固定小群使用，提供桌面悬浮入口。",
-            "支持实时聊天，可发送文字、图片和文件。",
-            "包含每日心情、每日问题和联机五子棋。",
-            "使用 Electron、React 和 Socket.io 构建。"
+            "集游戏大厅、项目和成员介绍于一体。",
+            "收录出包魔法师、鳄龙咆哮、暗棋和漳州麻将。",
+            "提供单机玩法与联机房间，可与好友一起游玩。",
+            "直接在浏览器中访问，无需安装独立客户端。"
         ],
-        notice: "下载包为 Windows 1.1.0 版本。",
-        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/XiaoELong.Setup.1.1.0.zip"
+        notice: "",
+        downloadUrl: "https://xiaoelong.cn/",
+        actionLabel: "访问网站"
     },
     yuketang: {
         kicker: "工具介绍",
@@ -318,6 +319,7 @@ function openToolModal(card, event) {
     toolNotice.textContent = content.notice;
     toolNotice.hidden = !content.notice;
     toolDownload.href = content.downloadUrl;
+    toolDownload.textContent = content.actionLabel || "下载 .zip";
     toolInfoModal.hidden = false;
     document.body.style.overflow = "hidden";
     setTimeout(() => closeToolModalButton.focus(), 0);

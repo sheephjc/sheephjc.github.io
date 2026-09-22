@@ -6,9 +6,9 @@ GitHub Pages: <https://sheephjc.github.io/>
 
 ### 小鳄龙之家
 
-面向固定小群使用的 Windows/macOS 桌面伴侣。项目提供桌面悬浮入口，支持实时聊天、每日心情、每日问题和联机五子棋等功能。
+集游戏大厅、项目和成员介绍于一体的网站，收录出包魔法师、鳄龙咆哮、暗棋和漳州麻将，提供单机玩法与联机房间。直接在浏览器中访问，无需安装独立客户端。
 
-Windows 1.1.0 版本下载：<https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/XiaoELong.Setup.1.1.0.zip>
+网站地址：<https://xiaoelong.cn/>
 
 ### Fenglab
 
@@ -20,17 +20,17 @@ Fenglab 独立网站。
 
 ### 漳州麻将联机版
 
-基于浏览器的漳州麻将联机项目。
+小鳄龙之家中的十六张闽南麻将，支持单机与 1–4 人联机，空位由 AI 补齐。
 
-项目以静态页面和原生 ES Module 组织代码，使用 Firebase Anonymous Auth、Realtime Database 承载房间状态同步，并通过本地 vendor 目录加载 Firebase SDK。
+发牌、行牌、计分与 AI 由网站后端运行，通过同源 Socket.IO 同步对局。
 
-项目地址：<https://sheephjc.github.io/Zhangzhou-Mahjong/>
+游玩地址：<https://xiaoelong.cn/game/mahjong>
 
 ### 暗棋
 
 一款基于中国象棋棋盘的双人暗棋变体，支持本地同屏和四位房间号联机对战。
 
-游玩地址：<http://43.139.223.204:3002/>
+游玩地址：<https://xiaoelong.cn/game/anqi>
 
 ## 工具
 
