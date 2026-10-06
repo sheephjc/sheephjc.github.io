@@ -65,7 +65,7 @@ const toolModalContent = {
     yuketang: {
         kicker: "工具介绍",
         title: "雨课堂组件（HJC 改进）",
-        meta: ["原作者：niuwh.cn", "改进者：HJC by Codex"],
+        meta: ["版本：v3.1.4", "原作者：niuwh.cn", "改进者：HJC by Codex"],
         features: [
             "能够自动刷视频、发讨论、做作业。",
             "作业采用 OCR 后接入大模型。",
@@ -73,7 +73,8 @@ const toolModalContent = {
             "改进后能够选择任一任务开始刷。"
         ],
         notice: "",
-        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/Yuketang.zip"
+        downloadUrl: "https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/Yuketang-v3.1.4.zip",
+        actionLabel: "下载 v3.1.4 .zip"
     },
     recorder: {
         kicker: "工具介绍",

@@ -48,7 +48,9 @@ Fenglab 独立网站。
 
 改进版支持自动刷视频、发讨论、做作业；作业流程会先通过 OCR 识别内容，再接入大模型辅助处理，并提供 DeepSeek API 配置。相比原版，改进后可以选择任一任务作为起点开始执行。
 
-下载地址：<https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/Yuketang.zip>
+当前版本：v3.1.4。
+
+下载地址：<https://github.com/sheephjc/sheephjc.github.io/releases/download/zip/Yuketang-v3.1.4.zip>
 
 ### 隐藏式录屏
 
